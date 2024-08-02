@@ -27,6 +27,18 @@ namespace shop.Application.Services
             _mapper = mapper;
             _authService = authService;
         }
+        public async Task<int> GetCartTotalAmountAsync()
+        {
+            int totalAmount = 0;
+            var cartItem = (await GetCartItems()).Data;
+            if (cartItem == null)
+            {
+                return 0;
+            }
+            cartItem.ForEach(ci => totalAmount += ci.Price * ci.Quantity);
+            return totalAmount;
+
+        }
         public async Task<ApiResponse<bool>> AddToCart(StoreCartItemDto newItem)
         {
             var accountId = _authService.GetUserId();
@@ -217,6 +229,7 @@ namespace shop.Application.Services
                     ProductTitle = product.Title,
                     ImageUrl = product.ImageUrl,
                     Price = productVariant.Price,
+                    OriginalPrice = productVariant.OriginalPrice,
                     ProductTypeId = productVariant.ProductTypeId,
                     ProductTypeName = productVariant.ProductType.Name,
                     Quantity = item.Quantity
