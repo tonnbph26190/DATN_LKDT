@@ -1,44 +1,10 @@
-export const validateLogin = (
-  username: string,
-  password: string
-): [string[], boolean] => {
-  const errors: string[] = [];
-
-  if (!username || username.trim().length === 0) {
-    errors.push("Tên tài khoản không được để trống");
-  }
-
-  if (!password || password.trim().length === 0) {
-    errors.push("Mật khẩu không được để trống");
-  }
-
-  return [errors, errors.length === 0];
-};
-
-export const validateRegister = (
-  username: string,
-  password: string,
-  confirmPassword: string,
+export const validateAddress = (
   name: string,
   email: string,
   phoneNumber: string,
   address: string
 ): [string[], boolean] => {
   const errors: string[] = [];
-
-  if (!username || username.trim().length === 0) {
-    errors.push("Tên tài khoản không được để trống");
-  }
-
-  if (!password || password.trim().length === 0) {
-    errors.push("Password is required.");
-  } else if (password.length < 6 || password.length > 100) {
-    errors.push("Mật khẩu không được dài hơn 100 ký tự & ngắn hơn 6 ký tự");
-  }
-
-  if (password !== confirmPassword) {
-    errors.push("Xác nhận mật khẩu không khớp");
-  }
 
   if (!name || name.trim().length === 0) {
     errors.push("Bạn chưa nhập họ và tên");
