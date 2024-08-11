@@ -71,7 +71,7 @@ namespace shop.Application.Services
             }
 
             var pageResults = 10f;
-            var pageCount = Math.Ceiling(_context.Orders.Count() / pageResults);
+            var pageCount = Math.Ceiling(_context.Orders.Where(o => o.AccountId == account.Id).Count() / pageResults);
 
             var orders = await _context.Orders
                                    .Where(o => o.AccountId == account.Id)
@@ -84,7 +84,8 @@ namespace shop.Application.Services
             {
                 Result = orders,
                 CurrentPage = page,
-                Pages = (int)pageCount
+                Pages = (int)pageCount,
+                PageResults = (int)pageResults
             };
 
             return new ApiResponse<Pagination<List<Order>>>
@@ -144,20 +145,9 @@ namespace shop.Application.Services
                 };
             }
 
-            var customer = await _context.Accounts.FirstOrDefaultAsync(c => c.Id == order.AccountId);
-
-            if (customer == null)
-            {
-                return new ApiResponse<OrderDetailCustomerDto>
-                {
-                    Success = false,
-                    Message = "Không tìm thấy thông tin người dùng"
-                };
-            }
-
             var orderCustomerInfo = new OrderDetailCustomerDto
             {
-                Id = customer.Id,
+                Id = order.Id,
                 FullName = order.FullName,
                 Email = order.Email,
                 Address = order.Address,
@@ -353,14 +343,6 @@ namespace shop.Application.Services
                 {
                     Success = false,
                     Message = "Mã voucher không đúng hoặc đã hết hạn sử dụng"
-                };
-            }
-            else if (IsVoucherUsed(voucher.Id))
-            {
-                return new ApiResponse<CustomerVoucherResponseDto>
-                {
-                    Success = false,
-                    Message = "Mã voucher đã được bạn sử dụng"
                 };
             }
             else
