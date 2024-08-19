@@ -154,7 +154,8 @@ namespace shop.Application.Services
                 Phone = order.Phone,
                 InvoiceCode = order.InvoiceCode,
                 DiscountValue = order.DiscountValue,
-                OrderCreatedAt = order.CreatedAt
+                OrderCreatedAt = order.CreatedAt,
+                State = order.State
             };
 
             return new ApiResponse<OrderDetailCustomerDto>
@@ -183,7 +184,13 @@ namespace shop.Application.Services
                     Message = "Không tìm thấy đơn hàng"
                 };
             }
+
+            var username = _authService.GetUserName();
+
             dbOrder.State = state;
+            dbOrder.ModifiedAt = DateTime.Now;
+            dbOrder.ModifiedBy = username;
+
             await _context.SaveChangesAsync();
             return new ApiResponse<bool>
             {
@@ -287,6 +294,7 @@ namespace shop.Application.Services
                 Email = address.Email,
                 Address = address.Address,
                 Phone = address.PhoneNumber,
+                CreatedBy = "Khách hàng"
             };
 
             if (voucherId != null)
@@ -366,6 +374,42 @@ namespace shop.Application.Services
                     Data = result
                 };
             }
+        }
+
+        public async Task<ApiResponse<bool>> CancelOrder(Guid orderId)
+        {
+            var order = await _context.Orders
+                                   .Where(o => o.State != OrderState.Cancelled)
+                                   .FirstOrDefaultAsync(o => o.Id == orderId);
+
+            if (order == null)
+            {
+                return new ApiResponse<bool>
+                {
+                    Success = false,
+                    Message = "Không tìm thấy đơn hàng"
+                };
+            }
+
+            if (order.State == OrderState.Delivered)
+            {
+                return new ApiResponse<bool>
+                {
+                    Success = false,
+                    Message = "Bạn không thể hủy đơn hàng này"
+                };
+            }
+
+            order.State = OrderState.Cancelled;
+            order.ModifiedAt = DateTime.Now;
+            order.ModifiedBy = "Khách hàng";
+
+            await _context.SaveChangesAsync();
+
+            return new ApiResponse<bool>
+            {
+                Message = "Hủy đơn hàng thành công"
+            };
         }
 
         private string GenerateInvoiceCode()

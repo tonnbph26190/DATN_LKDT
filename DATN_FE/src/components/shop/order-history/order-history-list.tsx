@@ -2,7 +2,7 @@ import Pagination from "@/components/ui/pagination";
 import { formatDate, formatPrice } from "@/lib/format/format";
 import Link from "next/link";
 import TagFiled from "@/components/ui/tag";
-import { mapOrderState } from "@/lib/enums/OrderState";
+import { mapCssTagField, mapOrderState } from "@/lib/enums/OrderState";
 
 interface IProps {
   orders: IOrder[];
@@ -10,10 +10,10 @@ interface IProps {
   currentPage: number;
 }
 const cssTagField: string[] = [
+  "bg-gray-900",
   "bg-yellow-900",
+  "bg-green-900",
   "bg-blue-900",
-  "bg-green-900",
-  "bg-green-900",
   "bg-red-900",
 ];
 
@@ -44,14 +44,14 @@ const OrderHistoryList = ({ orders, pages, currentPage }: IProps) => {
               <td className="px-4 py-2">{order.invoiceCode}</td>
               <td className="px-4 py-2 text-white">
                 <TagFiled
-                  cssClass={cssTagField[order.state]}
+                  cssClass={mapCssTagField(order.state)}
                   context={mapOrderState(order.state)}
                 />
               </td>
               <td className="px-4 py-2">{formatDate(order.createdAt)}</td>
               <td className="px-4 py-2">{formatPrice(order.discountValue)}</td>
               <td className="px-4 py-2">
-                {formatPrice(order.totalPrice - order.discountValue)}
+                {formatPrice(order.totalPrice - order.discountValue + 30000)}
               </td>
               <td className="px-4 py-2">
                 <Link href={`/order-history/${order.id}`}>

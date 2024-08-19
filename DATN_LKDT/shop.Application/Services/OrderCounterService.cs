@@ -6,6 +6,7 @@ using shop.Application.Interfaces;
 using shop.Application.ViewModels.RequestDTOs.OrderCounterDto;
 using shop.Application.ViewModels.ResponseDTOs.OrderCounterDto;
 using shop.Domain.Entities;
+using shop.Domain.Entities.Enum;
 using shop.Infrastructure.Database.Context;
 using System;
 using System.Collections.Generic;
@@ -19,14 +20,18 @@ namespace shop.Application.Services
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IAuthService _authService;
 
-        public OrderCounterService(AppDbContext context, IMapper mapper)
+        public OrderCounterService(AppDbContext context, IMapper mapper, IAuthService authService)
         {
             _context = context;
             _mapper = mapper;
+            _authService = authService;
         }
         public async Task<ApiResponse<bool>> CreateOrderCounter(Guid? voucherId, CreateOrderCounterDto newOrder)
         {
+            var username = _authService.GetUserName();
+
             var newOrderItems = newOrder.OrderItems;
 
             if(newOrderItems == null || newOrderItems.Count() == 0)
@@ -53,6 +58,8 @@ namespace shop.Application.Services
                 Address = newOrder.Address,
                 OrderItems = orderItems,
                 TotalPrice = totalAmount,
+                State = OrderState.Delivered,
+                CreatedBy = username
             };
 
             if (voucherId != null)

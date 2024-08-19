@@ -7,6 +7,8 @@ interface IOrder {
   state: number;
   createdAt: string;
   modifiedAt: string;
+  createdBy: string;
+  modifiedBy: string;
 }
 
 interface IOrderItem {
@@ -28,5 +30,6 @@ interface IOrderDetail {
   address: string;
   invoiceCode: string;
   discountValue: number;
+  state: number;
   orderCreatedAt: string;
 }
