@@ -10,6 +10,8 @@ interface IProduct {
   isActive: boolean;
   createdAt: string;
   modifiedAt: string;
+  createdBy: string;
+  modifiedBy: string;
   categoryId: string;
   productVariants: IProductVariant[];
   productImages?: IProductImage[];
@@ -31,6 +33,8 @@ interface IProductType {
   name: string;
   createdAt: string;
   modifiedAt: string;
+  createdBy: string;
+  modifiedBy: string;
 }
 
 interface IProductImage {
@@ -46,6 +50,8 @@ interface IProductAttribute {
   name: string;
   createdAt: string;
   modifiedAt: string;
+  createdBy: string;
+  modifiedBy: string;
 }
 
 interface IProductValue {
