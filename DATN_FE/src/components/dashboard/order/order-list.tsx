@@ -120,7 +120,7 @@ const OrderList = ({ orders, pages, currentPage, orderState }: IProps) => {
             <thead className="bg-gray-700 text-gray-400 uppercase">
               <tr>
                 <th className="px-4 py-2">#</th>
-                <th className="px-4 py-2">Mã hóa đơn</th>
+                <th className="px-4 py-2">Mã đơn hàng</th>
                 <th className="px-4 py-2">Trạng thái</th>
                 <th className="px-4 py-2">Ngày tạo</th>
                 <th className="px-4 py-2">Ngày sửa</th>
@@ -146,9 +146,11 @@ const OrderList = ({ orders, pages, currentPage, orderState }: IProps) => {
                   <td className="px-4 py-2">{order.createdBy}</td>
                   <td className="px-4 py-2">{order.modifiedBy}</td>
                   <td className="px-4 py-2">
-                    {formatPrice(
-                      order.totalPrice - order.discountValue + 30000
-                    )}
+                    {order.isCounterOrder
+                      ? formatPrice(order.totalPrice - order.discountValue)
+                      : formatPrice(
+                          order.totalPrice - order.discountValue + 30000
+                        )}
                   </td>
                   <td className="px-4 py-2">
                     <Link href={`/dashboard/orders/${order.id}`}>

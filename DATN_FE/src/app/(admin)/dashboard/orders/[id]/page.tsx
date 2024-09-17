@@ -1,6 +1,8 @@
+import AdminLoading from "@/components/dashboard/loading";
 import OrderDetail from "@/components/dashboard/order/order-detail";
 import UpdateOrderDetail from "@/components/dashboard/order/update-order-detail";
 import { cookies as nextCookies } from "next/headers";
+import { Suspense } from "react";
 
 const Order = async ({ id }: { id: string }) => {
   const cookieStore = nextCookies();
@@ -48,7 +50,10 @@ const Order = async ({ id }: { id: string }) => {
         orderDetail={orderDetail.data}
         orderItems={orderItems.data}
       />
-      <UpdateOrderDetail orderId={id} orderState={orderState.data} />
+      <UpdateOrderDetail
+        orderDetail={orderDetail.data}
+        orderState={orderState.data}
+      />
     </>
   );
 };
@@ -56,9 +61,9 @@ const Order = async ({ id }: { id: string }) => {
 const OrderDetailPage = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   return (
-    <>
+    <Suspense fallback={<AdminLoading />}>
       <Order id={id} />
-    </>
+    </Suspense>
   );
 };
 

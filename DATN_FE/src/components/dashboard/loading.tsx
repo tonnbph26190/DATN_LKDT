@@ -1,4 +1,4 @@
-const Loading = () => {
+const AdminLoading = () => {
   return (
     <div className="flex items-center justify-center space-x-2">
       <svg
@@ -83,4 +83,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default AdminLoading;
