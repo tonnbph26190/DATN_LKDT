@@ -12,7 +12,7 @@ using static System.Net.WebRequestMethods;
 
 namespace shop.Infrastructure.Initialization
 {
-  public class Seeding
+    public class Seeding
     {
         public static void SeedingAccount(ModelBuilder modelBuilder)
         {
@@ -71,6 +71,86 @@ namespace shop.Infrastructure.Initialization
                        PasswordHash = passwordHash3,
                        PasswordSalt = passwordSalt3,
                        RoleId = new Guid("5b3a05b0-c011-4593-abd1-cb2e486f8e43")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("a3339dd7-94b9-4f12-9d18-2ee341b4f35c"),
+                       Username = "nguyenvanminh@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("6060ab5a-ca8b-409c-87b2-363a69f06e66"),
+                       Username = "lethimai@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("0e5c838e-f387-4183-a1c1-4c1e802ab180"),
+                       Username = "tranlan@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("ae4c4f03-aa8a-4f37-a7cb-c5bc06e08d74"),
+                       Username = "nguyenan@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("463d52ee-4c4e-40b0-a8f3-e59086878964"),
+                       Username = "phantuyet@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("80cd99a5-f3e4-43f6-a725-f4e07fa7cd7d"),
+                       Username = "vuvankhai@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   },
+                   new AccountEntity
+                   {
+                       Id = new Guid("c36aab76-f6cc-46f6-a6c3-730d54b61a48"),
+                       Username = "lehoanganh@example.com",
+                       PasswordHash = passwordHash4,
+                       PasswordSalt = passwordSalt4,
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639")
+                   }, 
+                   new AccountEntity
+                   {
+                       Id = new Guid("4b45812f-2f47-41b9-b913-39bed1b02c1d"),
+                       Username = "tranle@example.com", 
+                       PasswordHash = passwordHash4, 
+                       PasswordSalt = passwordSalt4, 
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639") 
+                   }, 
+                   new AccountEntity
+                   {
+                       Id = new Guid("3a9477da-b75c-4ef6-9bf6-a93aa5ffaf6f"),
+                       Username = "hoangmai@example.com", 
+                       PasswordHash = passwordHash4, 
+                       PasswordSalt = passwordSalt4, 
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639") 
+                   }, 
+                   new AccountEntity
+                   {
+                       Id = new Guid("d15fcb08-fcb1-4a55-b012-b2be211ed2c1"),
+                       Username = "lehoa@example.com", 
+                       PasswordHash = passwordHash4, 
+                       PasswordSalt = passwordSalt4, 
+                       RoleId = new Guid("9ebee0d5-323a-4052-af12-827a9e856639") 
                    }
                  );
 
@@ -144,7 +224,108 @@ namespace shop.Infrastructure.Initialization
                        PhoneNumber = "1234567892",
                        Address = "121 Đường Cầu Giấy ,Cầu Giấy, Hà Nội",
                        IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("a3339dd7-94b9-4f12-9d18-2ee341b4f35c"),
+                       Name = "Nguyễn Văn Minh",
+                       Email = "minhnguyen@example.com",
+                       PhoneNumber = "0987654321",
+                       Address = "456 Đường Nguyễn Trãi, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh",
+                       IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("6060ab5a-ca8b-409c-87b2-363a69f06e66"),
+                       Name = "Lê Thị Mai",
+                       Email = "lethimai@example.com",
+                       PhoneNumber = "0912345679",
+                       Address = "789 Đường Lê Văn Sỹ, Phường 13, Quận 3, TP. Hồ Chí Minh",
+                       IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("0e5c838e-f387-4183-a1c1-4c1e802ab180"),
+                       Name = "Trần Thị Lan",
+                       Email = "tranlan@example.com",
+                       PhoneNumber = "0908765432",
+                       Address = "123 Đường Lê Lai, Phường Phú Hòa, TP. Thủ Dầu Một, Bình Dương",
+                       IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("ae4c4f03-aa8a-4f37-a7cb-c5bc06e08d74"),
+                       Name = "Nguyễn Thị An",
+                       Email = "nguyenan@example.com",
+                       PhoneNumber = "0976543210",
+                       Address = "456 Đường Nguyễn Thái Học, Phường 10, TP. Cần Thơ",
+                       IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("463d52ee-4c4e-40b0-a8f3-e59086878964"),
+                       Name = "Phan Thị Tuyết",
+                       Email = "phantuyet@example.com",
+                       PhoneNumber = "0901234567",
+                       Address = "789 Đường Võ Văn Tần, Phường 5, Quận 3, TP. Hồ Chí Minh",
+                       IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("80cd99a5-f3e4-43f6-a725-f4e07fa7cd7d"),
+                       Name = "Vũ Văn Khải",
+                       Email = "vuvankhai@example.com",
+                       PhoneNumber = "0912345678",
+                       Address = "123 Đường Trường Chinh, Phường 14, Quận Tân Bình, TP. Hồ Chí Minh",
+                       IsMain = true
+                   },
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("c36aab76-f6cc-46f6-a6c3-730d54b61a48"),
+                       Name = "Lê Hoàng Anh",
+                       Email = "lehoanganh@example.com",
+                       PhoneNumber = "0923456789",
+                       Address = "234 Đường Hà Huy Tập, Phường Đông Vệ, TP. Thanh Hóa",
+                       IsMain = true
+                   }, 
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(),
+                       AccountId = new Guid("4b45812f-2f47-41b9-b913-39bed1b02c1d"),
+                       Name = "Trần Thị Lệ",
+                       Email = "tranle@example.com",
+                       PhoneNumber = "0987654321",
+                       Address = "123 Đường Nguyễn Văn Linh, Phường Tân Hưng, Quận 7, TP. Hồ Chí Minh",
+                       IsMain = true
+                   }, 
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(), 
+                       AccountId = new Guid("3a9477da-b75c-4ef6-9bf6-a93aa5ffaf6f"),
+                       Name = "Hoàng Thị Mai",
+                       Email = "hoangmai@example.com",
+                       PhoneNumber = "0976543210",
+                       Address = "456 Đường Phan Chu Trinh, Phường 5, TP. Đà Nẵng",
+                       IsMain = true
+                   }, 
+                   new AddressEntity
+                   {
+                       Id = Guid.NewGuid(), 
+                       AccountId = new Guid("d15fcb08-fcb1-4a55-b012-b2be211ed2c1"),
+                       Name = "Lê Thị Hòa",
+                       Email = "lehoa@example.com",
+                       PhoneNumber = "0934567890",
+                       Address = "789 Đường Lý Thường Kiệt, Phường Bắc Lý, TP. Quảng Bình",
+                       IsMain = true
                    }
+
                  );
         }
 
@@ -306,7 +487,10 @@ namespace shop.Infrastructure.Initialization
                 Slug = "kit-arduino-mega2560",
                 Description = "Tính năng: Nhiều chân I/O(54 chân Digital I/O và 16 chân Analog Input), Bộ nhớ lớn(256 KB bộ nhớ Flash, 8 KB SRAM và 4 KB EEPROM), Hỗ trợ PWM & cổng USB",
                 ImageUrl = "https://i.pinimg.com/564x/28/3d/b1/283db15665e274cb4e6d83741238e2ae.jpg",
-                CategoryId = new Guid("a186203e-0d11-4c22-a45e-58ecfeed368f")
+                CategoryId = new Guid("a186203e-0d11-4c22-a45e-58ecfeed368f"),
+                SeoTitle = "KIT Arduino Mega2560",
+                SeoKeyworks = "KIT Arduino Mega2560",
+                SeoDescription = "Tính năng: Nhiều chân I/O(54 chân Digital I/O và 16 chân Analog Input)"
             },
             new Product
             {
@@ -315,7 +499,10 @@ namespace shop.Infrastructure.Initialization
                 Slug = "kit-arduino-uno-r3",
                 Description = "Tính năng: Tương thích với nhiều loại shield (bảng mở rộng) và phụ kiện, Đa dạng chân I/O( với 14 chân Digital I/O (bao gồm 6 chân PWM) và 6 chân Analog Input), 32KB bộ nhớ Flash, 2 KB SRAM và 1 KB EEPROM",
                 ImageUrl = "https://i.pinimg.com/564x/19/3a/65/193a65211060c29ffbddac99ea01ac59.jpg",
-                CategoryId = new Guid("a186203e-0d11-4c22-a45e-58ecfeed368f")
+                CategoryId = new Guid("a186203e-0d11-4c22-a45e-58ecfeed368f"),
+                SeoTitle = "Kit Arduino UNO R3",
+                SeoKeyworks = "Kit Arduino UNO R3",
+                SeoDescription = "Tính năng: Tương thích với nhiều loại shield (bảng mở rộng) và phụ kiện"
             },
             new Product
             {
@@ -324,16 +511,22 @@ namespace shop.Infrastructure.Initialization
                 Slug = "kit-arduino-wifi-esp-32",
                 Description = "Tính năng: Hỗ trợ Wi-Fi 802.11 b/g/n và Bluetooth v4.2, Hiệu suất cao( với bộ xử lý dual-core 32-bit Xtensa LX6, hoạt động ở tần số lên đến 240 MH), Bộ nhớ lớn( với 520 KB SRAM và tùy chọn bộ nhớ Flash từ 4MB trở lên)",
                 ImageUrl = "https://i.pinimg.com/564x/47/68/73/476873b27d117bb46f76f1bb50b73499.jpg",
-                CategoryId = new Guid("a186203e-0d11-4c22-a45e-58ecfeed368f")
+                CategoryId = new Guid("a186203e-0d11-4c22-a45e-58ecfeed368f"),
+                SeoTitle = "Kit Arduino WiFi ESP-32",
+                SeoKeyworks = "Kit Arduino WiFi ESP-32",
+                SeoDescription = "Tính năng: Hỗ trợ Wi-Fi 802.11 b/g/n và Bluetooth v4.2, Hiệu suất cao( với bộ xử lý dual-core 32-bit Xtensa LX6, hoạt động ở tần số lên đến 240 MH)"
             },
             new Product
             {
                 Id = new Guid("4f5c260c-0870-4940-a394-b20c56b3fcca"),
                 CategoryId = new Guid("2c8eb836-090b-4a18-a869-620d7f527180"),
-                Title = "“Bộ Trạm Hàn Makita C11",
+                Title = "Bộ Trạm Hàn Makita C11",
                 Slug = "bo-tram-han-makita-c11",
                 Description = "Tính năng: Tốc độ gia nhiệt nhanh, chế độ ngủ tự động, thiết kế chống tĩnh điện và bảo vệ quá nhiệt.",
                 ImageUrl = "https://i.pinimg.com/564x/22/db/f1/22dbf1e839f495516eba3842d35c7948.jpg",
+                SeoTitle = "Bộ Trạm Hàn Makita C11",
+                SeoKeyworks = "Bộ Trạm Hàn Makita C11",
+                SeoDescription = "Tính năng: Tốc độ gia nhiệt nhanh, chế độ ngủ tự động, thiết kế chống tĩnh điện và bảo vệ quá nhiệt."
             },
             new Product
             {
@@ -343,6 +536,9 @@ namespace shop.Infrastructure.Initialization
                 Slug = "tay-han-dieu-chinh-tq936-80w-200v",
                 Description = "Tính năng: Tốc độ gia nhiệt nhanh, chế độ ngủ tự động, thiết kế chống tĩnh điện và bảo vệ quá nhiệt.",
                 ImageUrl = "https://i.pinimg.com/564x/2e/33/32/2e333249cee6e7f57006ce9aec123f60.jpg",
+                SeoTitle = "Tay Hàn Điều Chỉnh TQ936 80W 200V",
+                SeoKeyworks = "Tay Hàn Điều Chỉnh TQ936 80W 200V",
+                SeoDescription = "Tính năng: Tốc độ gia nhiệt nhanh, chế độ ngủ tự động, thiết kế chống tĩnh điện và bảo vệ quá nhiệt."
             },
             new Product
             {
@@ -352,6 +548,9 @@ namespace shop.Infrastructure.Initialization
                 Slug = "bo-tay-han-908s-80w-220v",
                 Description = "Tính năng: Tốc độ gia nhiệt nhanh, chế độ ngủ tự động, thiết kế chống tĩnh điện và bảo vệ quá nhiệt.",
                 ImageUrl = "https://i.pinimg.com/564x/8c/6f/f3/8c6ff345b262a30473228755be595429.jpg",
+                SeoTitle = "Bộ Tay Hàn 908S-80W 220V",
+                SeoKeyworks = "Bộ Tay Hàn 908S-80W 220V",
+                SeoDescription = "Tính năng: Tốc độ gia nhiệt nhanh, chế độ ngủ tự động, thiết kế chống tĩnh điện và bảo vệ quá nhiệt."
 
             },
             new Product
@@ -362,6 +561,9 @@ namespace shop.Infrastructure.Initialization
                 Slug = "cam-bien-hien-dien-hlk",
                 Description = "Tính năng: Phát hiện chuyển động của con người hoặc vật thể trong phạm vi cảm biến. Dễ dàng tích hợp vào các hệ thống điện tử và nhà thông minh",
                 ImageUrl = "https://i.pinimg.com/564x/d1/60/83/d16083b9db71c03e103d78f9e9d215eb.jpg",
+                SeoTitle = "Cảm Biến Hiện Diện HLK",
+                SeoKeyworks = "Cảm Biến Hiện Diện HLK",
+                SeoDescription = "Tính năng: Phát hiện chuyển động của con người hoặc vật thể trong phạm vi cảm biến. Dễ dàng tích hợp vào các hệ thống điện tử và nhà thông minh"
 
             },
             new Product
@@ -372,6 +574,9 @@ namespace shop.Infrastructure.Initialization
                 Slug = "cam-bien-rung-hdx",
                 Description = "Tính năng: Giám sát độ rung, sử dụng để đảm bảo an toàn và ổn định cho các thiết bị hoặc công trình quan trọng",
                 ImageUrl = "https://i.pinimg.com/564x/ec/3c/d4/ec3cd4cbb811deebd3db2fbbb67fd932.jpg",
+                SeoTitle = "Cảm Biến Rung HDX",
+                SeoKeyworks = "Cảm Biến Rung HDX",
+                SeoDescription = "Tính năng: Giám sát độ rung, sử dụng để đảm bảo an toàn và ổn định cho các thiết bị hoặc công trình quan trọng"
             },
             new Product
             {
@@ -380,7 +585,10 @@ namespace shop.Infrastructure.Initialization
                 Title = "Cảm Biến Siêu Âm SRF",
                 Slug = "cam-bien-sieu-am-srf",
                 Description = "Dùng để đo khoảng cách đến các vật thể mà không cần tiếp xúc. Có thể sử dụng để theo dõi vị trí của các vật thể hoặc robot di động hoặc được tích hợp vào các robot để phát hiện và tránh vật cản khi di chuyển",
-                ImageUrl = "https://i.pinimg.com/564x/f6/38/09/f63809ff0bb62c49c6f11e3cd89cc16a.jpg"
+                ImageUrl = "https://i.pinimg.com/564x/f6/38/09/f63809ff0bb62c49c6f11e3cd89cc16a.jpg",
+                SeoTitle = "Cảm Biến Siêu Âm SRF",
+                SeoKeyworks = "Cảm Biến Siêu Âm SRF",
+                SeoDescription = "Dùng để đo khoảng cách đến các vật thể mà không cần tiếp xúc."
             }
         );
 
@@ -700,7 +908,7 @@ namespace shop.Infrastructure.Initialization
                       SeoTitle = "Hướng dẫn chọn mua linh kiện điện tử - Mẹo cho người mới bắt đầu",
                       SeoDescription = "Hướng dẫn chi tiết cách chọn mua linh kiện điện tử phù hợp cho người mới bắt đầu.",
                       SeoKeyworks = "chọn mua linh kiện điện tử, hướng dẫn chọn linh kiện, linh kiện điện tử"
-                  }, 
+                  },
                   new BlogEntity
                   {
                       Id = Guid.NewGuid(),
@@ -712,7 +920,7 @@ namespace shop.Infrastructure.Initialization
                       SeoTitle = "10 ứng dụng phổ biến của PLC trong công nghiệp - Tự động hóa công nghiệp",
                       SeoDescription = "Khám phá 10 ứng dụng phổ biến của PLC trong các hệ thống công nghiệp hiện đại.",
                       SeoKeyworks = "PLC, ứng dụng PLC, tự động hóa công nghiệp"
-                  }, 
+                  },
                   new BlogEntity
                   {
                       Id = Guid.NewGuid(),
